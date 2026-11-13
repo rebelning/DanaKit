@@ -417,9 +417,12 @@ class GeneratePacketTests: XCTestCase {
         XCTAssertEqual(packet.data, expectedSnapshot.data)
     }
 
-    func testGenerateGeneralSetPumpTime() {
-        // 2023-12-05T11:00:00.000 UTC
-        let options = PacketGeneralSetPumpTime(time: Date(timeIntervalSince1970: 1701774000))
+    func testGenerateGeneralSetPumpTime() throws {
+        // This command encodes local pump time; keep the fixture at 11:00 in any time zone.
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .current
+        let time = try XCTUnwrap(calendar.date(from: DateComponents(year: 2023, month: 12, day: 5, hour: 11)))
+        let options = PacketGeneralSetPumpTime(time: time)
         let packet = generatePacketGeneralSetPumpTime(options: options)
         let expectedData = Data([23, 12, 5, 11, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 113, data: expectedData)
