@@ -465,7 +465,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryAlarmFromDate() {
-        let options = PacketHistoryBase(from: Date(timeIntervalSince1970: 1701774000))
+        let options = PacketHistoryBase(from: Date(timeIntervalSince1970: 1701774000), usingUtc: true)
         let packet = generatePacketHistoryAlarm(options: options)
         let expectedData = Data([23, 12, 5, 11, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 25, data: expectedData)
@@ -476,7 +476,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryAlarm() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryAlarm(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 25, data: expectedData)
@@ -487,7 +487,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryAll() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryAll(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 31, data: expectedData)
@@ -498,7 +498,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryBasal() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryBasal(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 26, data: expectedData)
@@ -509,7 +509,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryBloodGlucose() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryBloodGlucose(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 21, data: expectedData)
@@ -520,7 +520,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryBolus() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryBolus(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 17, data: expectedData)
@@ -531,7 +531,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryCarbohydrates() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryCarbohydrates(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 22, data: expectedData)
@@ -542,7 +542,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryDaily() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryDaily(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 18, data: expectedData)
@@ -553,7 +553,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryPrime() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryPrime(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 19, data: expectedData)
@@ -564,7 +564,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryRefill() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryRefill(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 20, data: expectedData)
@@ -575,7 +575,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistorySuspend() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistorySuspend(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 24, data: expectedData)
@@ -586,7 +586,7 @@ class GeneratePacketTests: XCTestCase {
     }
 
     func testGenerateHistoryTemporary() {
-        let options = PacketHistoryBase(from: nil)
+        let options = PacketHistoryBase(from: nil, usingUtc: true)
         let packet = generatePacketHistoryTemporary(options: options)
         let expectedData = Data([0, 1, 1, 0, 0, 0])
         let expectedSnapshot = DanaGeneratePacket(opCode: 23, data: expectedData)
